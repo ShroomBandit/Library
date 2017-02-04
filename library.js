@@ -122,7 +122,6 @@ var library = {
 	pack: function(username){
 
 		localStorage.setItem(username,JSON.stringify(library.books));
-		//$.cookie("List of book objects.",this.books, { expires: 1 });
 		//console.log('Packed this --> ' + this.books);
 
 	},
