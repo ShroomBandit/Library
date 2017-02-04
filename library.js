@@ -54,7 +54,7 @@ var library = {
 		alert(this.elements.title.value+" added!");
 
 		// Add the book to the list of books on the html page.
-		this.elements.book_list.insertAdjacentHTML("beforeend", "<div class='book_in_list' id='"+this.elements.title.value+"'>" + this.elements.title.value + "</div>");
+		this.elements.book_list.insertAdjacentHTML("beforeend", "<div class='book_in_list' id='"+spaceToUnderscore(this.elements.title.value)+"'>" + this.elements.title.value + "</div>");
 		
 		// Add event listener.
 		var books = document.querySelectorAll('.book_in_list');
@@ -92,14 +92,7 @@ var library = {
 		// Loop through the book objects and create a div with the book title for each book in the array.
 		for (book in this.books){
 			console.log(this.books[book].title);
-			// this.elements.book_list.insertAdjacentHTML("beforeend", "<div class='book_in_list'>" + this.books[book].title + "</div>");
 		};
-
-		// Add event listeners.
-		/*var books_in_list = document.querySelectorAll('.book_in_list');
-		for(var i = 0; i < books_in_list.length; i++) {
-			books_in_list[i].addEventListener('click', library.selectBook);
-		}*/
 
 	},
 
@@ -122,15 +115,12 @@ var library = {
 	pack: function(username){
 
 		localStorage.setItem(username,JSON.stringify(library.books));
-		//$.cookie("List of book objects.",this.books, { expires: 1 });
-		//console.log('Packed this --> ' + this.books);
 
 	},
 
 	populatePage: function(){
 
 		for (bookobj in this.books) {
-			console.log(this.books[bookobj]);
 
 			// Add the book to the list of books on the html page.
 			this.elements.book_list.insertAdjacentHTML("beforeend", "<div class='book_in_list' id='"+ this.books[bookobj].title +"'>" + this.books[bookobj].title + "</div>");
@@ -141,7 +131,6 @@ var library = {
 		var bookhtml = document.querySelectorAll('.book_in_list');
 		for(var i = 0; i < bookhtml.length; i++) {
 			bookhtml[i].addEventListener('click', library.selectBook);
-			console.log('what the event listener is added to: '+bookhtml[i]);
 		};
 
 		// Add username to options bar
@@ -173,19 +162,16 @@ var library = {
 		// Loop through book objects in the books array.
 		var raw_search_title = this.elements.search_title.value;
 		var search_title = spaceToUnderscore(raw_search_title);
-		console.log('raw:'+raw_search_title);
-		console.log('after function:'+search_title);
 		if (library.books){
 			var no_book = true;
 			for (book in library.books){
-				if (library.books[book].title === search_title){ // if the title of the object in the books array is equal to the argument we passed to it, log the object.
+				if (library.books[book].title === raw_search_title){ // if the title of the object in the books array is equal to the argument we passed to it, log the object.
 					no_book = false;
 					$('.selected_book').removeClass('selected_book');
 					$('#'+search_title).addClass('selected_book');
-					var book_name = $('.selected_book').attr('id');
-					var display_book = library.searchByTitle(book_name);
-					console.log(display_book);
-					console.log('Checkpoint get');
+					//var book_name = $('.selected_book').attr('id');
+					//var display_book = library.searchByTitle(book_name);
+					var display_book = library.searchByTitle(raw_search_title);
 					library.displayBook(display_book);
 					break;
 				};
@@ -215,7 +201,7 @@ var library = {
 
 		$('.selected_book').removeClass('selected_book');
 		$(this).addClass('selected_book');
-		var book_name = $('.selected_book').attr('id');
+		var book_name = underscoreToSpace($('.selected_book').attr('id'));
 
 		var display_book = library.searchByTitle(book_name);
 
@@ -224,6 +210,10 @@ var library = {
 	},
 
 	unpack: function(){
+
+		//clear all existing info from page
+		this.hideBook();
+		
 		
 		this.username = this.elements.username_input.value;
 
@@ -257,10 +247,10 @@ function spaceToUnderscore(string){
 	var new_letter = '';
 	for (letter in string) {
 		new_letter = string[letter];
-		if (string[letter] === '_') {
-			new_letter = ' ';
+		if (string[letter] === ' ') {
+			new_letter = '_';
 		};
-		new_string += string[letter];
+		new_string += new_letter;
 	};
 	return new_string;
 };
@@ -275,7 +265,7 @@ function underscoreToSpace(string){
 		if (string[letter] === '_') {
 			new_letter = ' ';
 		};
-		new_string += string[letter];
+		new_string += new_letter;
 	};
 	return new_string;
 
