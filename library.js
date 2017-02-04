@@ -115,6 +115,10 @@ var library = {
 	pack: function(username){
 
 		localStorage.setItem(username,JSON.stringify(library.books));
+<<<<<<< HEAD
+=======
+		//console.log('Packed this --> ' + this.books);
+>>>>>>> 60162f86411ce8c45d68a91fcb683eee1073be4c
 
 	},
 
