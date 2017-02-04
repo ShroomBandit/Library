@@ -1,0 +1,111 @@
+body {
+	margin: 0px;
+	font-family: sans-serif;
+	background-color: #EEEEEE;
+}
+ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+li {
+	padding-top: 9px;
+	padding-bottom: 9px;
+	margin: 0px;
+	display: block;
+	width: 130px;
+	float: left;
+	font-size: 18px;
+	text-align: center;
+}
+li:hover {
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
+#user_name_display {
+	color: green;
+}
+#user_info {
+	float: right;
+	position: absolute;
+	height: 30px;
+	width: 200px;
+	right: 0px;
+	top: 0px;
+	text-align: center;
+	padding-top: 10px;
+}
+#login_button {
+	float: right;
+}
+#logout_button {
+	float: right;
+}
+#login_inputs {
+	float: right;
+}
+#left {
+	position: absolute;
+	margin-left: 2%;
+	width: 59%;
+	margin-top: 20px;
+}
+#right {
+	position: absolute;
+	left: 60%;
+	width: 39%;
+	height: 92%;
+	background-image: url('pics/bookshelf.jpg');
+}
+#book_list {
+	margin-top: 20px;
+	color: white;
+	height: 30%;
+	overflow-y: scroll;
+	border-left: solid 1px #000; 
+	padding-left: 10px;
+}
+#selected_book_info_outer {
+	margin: 20px;
+	background-color: #DDDDDD;
+	opacity: .8;
+}
+#selected_book_info_inner {
+	margin: 10px;
+}
+.book_in_list {
+	color: black;
+	font-size: 24px;
+	background-color: #DDDDDD;
+	opacity: .8;
+}
+.book_in_list:hover {
+	color: red;
+	cursor: pointer;
+	background-color: #CCCCCC;
+	opacity: .8;
+}
+#title_wrapper {
+	width: 100%;
+	height: 40px;
+	background-color: #DDDDDD;
+	background-size: 200px; 
+}
+#title_bar {
+	width: 60%;
+	margin: auto;
+	height: 40px;
+	background-color: #DDDDDD;
+}
+.selected_book {
+	color: red;
+	background-color: #CCCCCC;
+}
+.display {
+	font-size: 20px;
+}
+.tadp {
+	font-size: 20px;
+	font-family: cursive;
+	color: #333333;
+}

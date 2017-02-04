@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<script type="text/javascript" src="test.js"></script>-->
+	<title>Library</title>
+	<link rel="stylesheet" type="text/css" href="library.css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="jquery.cookie.js"></script>
+</head>
+<body>
+	<div id="title_wrapper">
+		<div id="title_bar">
+			<ul>
+				<li id="add_book_button">Add Book</li>
+				<li id="search_book_button">Search Book</li>
+				<li id="login_button">Login</li>
+				<li id="logout_button">Logout</li>
+			</ul>
+			<div id='login_inputs'>
+				Username: <input id='username_input' type='text'/><br>
+				Password: <input id='password_input' type='text'/><br>
+				<input type='button' value='submit' onclick='library.unpack();'/>
+			</div>
+		</div>
+		<div id="user_info">
+			Welcome, <span id='user_name_display'></span>!
+		</div>
+	</div>
+	<div id="left">
+		<div id="add_book">
+			<br>
+			Title: <input id="title_input" type="text"/><br>
+			Author: <input id="author_input" type="text"/><br>
+			Date printed: <input id="year_input" type="text" size="4"/><br>
+			Number of pages: <input id="page_input" type="text" size="6"/><br>
+			Have you read this book? <input type="checkbox" value="read_yes"/> Yes<br>
+			<input type="button" value="Add book" onclick="library.addBook();"/><br>
+			_______________________________________________________
+		</div>
+		<div id="search_book">
+			<br>
+			Search by title: <input id="search_title_input" type="text"/>
+			<input type="button" value="Search book" onclick="library.searchBook();"/><br>
+			_______________________________________________________
+		</div>
+	</div>
+	<div id="right">
+		<div id="book_list">Bookshelf: </div>
+		<div id="selected_book_info_outer">
+			<div id="selected_book_info_inner">
+				<br>
+				<span class='tadp'>Title: </span><span id='display_book_title' class='display'></span><br>
+				<span class='tadp'>Author: </span><span id='display_book_author' class='display'></span><br>
+				<span class='tadp'>Date Published: </span><span id='display_publish_date' class='display'></span><br>
+				<span class='tadp'>Pages: </span><span id='display_num_pages' class='display'></span><br>
+				<input type="button" value="Remove book" onclick="library.removeBook();"/>
+				<input type="button" value="Edit book" onclick="library.editBook();"/><br>
+				_______________________________________________________
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="library.js"></script>
+</body>
+</html>
